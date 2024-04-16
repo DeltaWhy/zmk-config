@@ -10,7 +10,7 @@
 
 &xiao_spi {
     status = "okay";
-    cs-gpios = <&xiao_d 6 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&xiao_d 6 GPIO_ACTIVE_LOW>, <&xiao_d 7 GPIO_ACTIVE_LOW>;
     shifter: 595@0 {
         compatible = "zmk,gpio-595";
         status = "okay";
@@ -20,6 +20,29 @@
         label = "74HC595";
         #gpio-cells = <2>;
         ngpios = <8>;
+    };
+
+    glidepoint: glidepoint@1 {
+    	compatible = "cirque,pinnacle";
+	spi-max-frequency = <200000>;
+	reg = <1>;
+	status = "okay";
+	dr-gpios = <&xiao_d 5 (GPIO_ACTIVE_HIGH)>;
+
+	sensitivity = "2x";
+	sleep;
+	no-taps;
+    };
+};
+
+/ {
+    glidepoint_listener {
+        compatible = "zmk,input-listener";
+	device = <&glidepoint>;
+
+	xy-swap;
+	y-invert;
+	x-invert;
     };
 };
 
