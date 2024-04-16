@@ -1,0 +1,11 @@
+file_format: "1"
+id: skytoucher
+name: skytoucher
+type: shield
+url: https://github.com/jasonhazel/skytoucher
+requires: [seeed_xiao]
+features:
+  - keys
+siblings:
+  - skytoucher_left
+  - skytoucher_right

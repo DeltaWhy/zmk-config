@@ -1,0 +1,101 @@
+/*
+ * Copyright (c) 2022 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+	model = "Raytac MDBT50Q";
+	compatible = "raytac,mdbt50q";
+
+	chosen {
+		zephyr,code-partition = &code_partition;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zmk,kscan = &kscan;
+		zmk,matrix_transform = &transform;
+		zephyr,console = &cdc_acm_uart;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		blue_led: led_0 {
+			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
+			label = "Blue LED";
+		};
+	};
+
+	transform: transform {
+		compatible = "zmk,matrix-transform";
+		columns = <1>;
+		rows = <1>;
+
+		map = <RC(0,0)>;
+	};
+	
+	kscan: kscan {
+		compatible = "zmk,kscan-gpio-direct";
+		label = "KSCAN";
+    input-gpios = <&gpio0 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+	};
+};
+
+&adc {
+	status = "okay";
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&usbd {
+  status = "okay";
+  cdc_acm_uart: cdc_acm_uart {
+    compatible = "zephyr,cdc-acm-uart";
+    label = "CDC_ACM_0";
+  };
+};
+
+
+&flash0 {
+	/*
+	 * For more information, see:
+	 * http://docs.zephyrproject.org/latest/devices/dts/flash_partitions.html
+	 */
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		sd_partition: partition@0 {
+			label = "mbr";
+			reg = <0x00000000 0x00001000>;
+		};
+		code_partition: partition@1000 {
+			label = "code_partition";
+			reg = <0x00001000 0x000d3000>;
+		};
+
+		storage_partition: partition@d4000 {
+			label = "storage";
+			reg = <0x000d4000 0x00020000>;
+		};
+
+		boot_partition: partition@f4000 {
+			label = "adafruit_boot";
+			reg = <0x000f4000 0x0000c000>;
+		};
+	};
+};

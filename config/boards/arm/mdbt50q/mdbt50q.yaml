@@ -1,0 +1,13 @@
+identifier: mdbt50q
+name: Raytac MDBT50Q
+type: mcu
+arch: arm
+toolchain:
+  - zephr
+  - gnuarmemb
+  - xtools
+supported:
+  - usb_device
+  - ble
+  - ieee802154
+  - watchdog
