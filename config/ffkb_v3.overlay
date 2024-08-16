@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) 2021 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <dt-bindings/zmk/matrix_transform.h>
+
+// From Pete: https://discord.com/channels/719497620560543766/845285481888743434/1206181117296644106
+&pro_micro_i2c {
+    status = "okay";
+    glidepoint: glidepoint@2a {
+        compatible = "cirque,pinnacle";
+        reg = <0x2a>;
+        status = "okay";
+        dr-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH)>;
+        sensitivity = "1x";
+        sleep;
+        #no-taps;
+    };
+};
+
+/ {
+    // Rotation config, from Pete
+    // This will change in the future
+    // https://discord.com/channels/719497620560543766/845285481888743434/1206407883777114182
+    input_config {
+        compatible = "zmk,input-listener";
+        device = <&glidepoint>;
+        xy-swap;
+        y-invert;
+        x-invert;
+	scale-multiplier = <3>;
+	scale-divisor = <2>;
+    };
+    encoder_1: encoder_1 {
+        compatible = "alps,ec11";
+        a-gpios = <&pro_micro 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        steps = <15>;
+        status = "okay";
+    };
+
+    // Right encoder
+    encoder_2: encoder_2 {
+        compatible = "alps,ec11";
+        a-gpios = <&pro_micro 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        steps = <15>;
+        status = "okay";
+    };
+};
