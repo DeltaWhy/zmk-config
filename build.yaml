@@ -21,3 +21,5 @@ include:
     shield: totem_right
   - board: seeeduino_xiao_rp2040
     shield: bad_wings
+  - board: seeeduino_xiao_ble
+    shield: bykeeb

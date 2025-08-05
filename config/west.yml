@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: petejohanson
       url-base: https://github.com/petejohanson
+    - name: sadekbaroudi
+      url-base: https://github.com/sadekbaroudi
   projects:
     - name: zmk
       # remote: zmkfirmware
@@ -14,5 +16,9 @@ manifest:
     - name: cirque-input-module
       remote: petejohanson
       revision: main
+    - name: zmk-fingerpunch-keyboards
+      remote: sadekbaroudi
+      revision: main
+      import: config/deps.yml
   self:
     path: config
