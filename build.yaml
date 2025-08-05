@@ -22,4 +22,6 @@ include:
   - board: seeeduino_xiao_rp2040
     shield: bad_wings
   - board: seeeduino_xiao_ble
-    shield: bykeeb
+    shield: bykeeb_left
+  - board: seeeduino_xiao_ble
+    shield: bykeeb_right
