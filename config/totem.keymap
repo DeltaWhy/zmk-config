@@ -16,10 +16,12 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define BASE 0
-#define NAV  1
-#define NUM  2
-#define ADJ  3
+#define DEFAULT 0
+#define QWERTY  1
+#define GAME    2
+#define NAV     3
+#define NUM     4
+#define ADJ  5
 
 #define LSPO &hm LSHFT LS(N9)
 #define RSPC &hm RSHFT RS(N0)
@@ -133,6 +135,28 @@ label= "BASE"                              ;
                         >;
                 };
 
+        qwerty_layer {
+            label = "QWERTY";
+
+            bindings = <
+    &kp Q        &kp W        &kp E       &kp R         &kp T                                       &kp Y         &kp U        &kp I         &kp O       &kp P       
+    &hm LGUI A   &hm LALT S   &hm LCTL D  &hs LSHIFT F  &kp G                                       &kp H         &hs RSHIFT J &hm RCTL K    &hm LALT L  &hm RGUI SCLN 
+    &trans &kp Z        &hm RALT X   &kp C       &kp V         &kp B                                       &kp N         &kp M        &kp COMMA     &hm RALT DOT &kp FSLH &trans
+                                         &mo NAV       &kp SPC  &kp TAB  &kp ENTER   &kp BSPC &mo NUM      
+            >;
+        };
+
+        game_layer {
+            label = "Game";
+
+            bindings = <
+    &kp Q        &kp W        &kp E       &kp R         &kp T                                       &kp Y         &kp U        &kp I         &kp O       &kp P       
+    &kp A        &kp S        &kp D       &kp F         &kp G                                       &kp H         &kp J        &kp K         &kp L       &kp SCLN   
+    &trans &kp Z        &kp X        &kp C       &kp V         &kp B                                       &kp N         &kp M        &kp COMMA     &kp DOT     &kp FSLH   &trans
+                                         &mo NAV       &kp SPC  &kp TAB  &kp ENTER   &kp BSPC &mo NUM      
+            >;
+        };
+
         nav_layer {
             label = "Navigation";
             
@@ -161,7 +185,7 @@ label= "BASE"                              ;
             bindings = <
     &kp F12      &kp F7       &kp F8      &kp F9        &kp PSCRN                                   &bt BT_CLR    &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3
     &kp F11      &kp F4       &kp F5      &kp F6        &kp SLCK                                    &out OUT_BLE  &kp RSFT     &kp RCTL      &kp LALT    &kp RGUI
-    &trans &kp F10      &kp F1       &kp F2      &kp F3        &kp PAUSE_BREAK                             &out OUT_USB  &trans       &trans        &kp RALT    &trans &trans
+    &trans &kp F10      &kp F1       &kp F2      &kp F3        &kp PAUSE_BREAK                             &out OUT_USB  &tog QWERTY  &tog GAME     &kp RALT    &trans &trans
                                           &trans        &trans       &trans        &trans           &trans        &trans
             >;
         };
