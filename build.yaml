@@ -25,5 +25,5 @@ include:
     shield: bykeeb_left
   - board: seeeduino_xiao_ble
     shield: bykeeb_right
-  - board: sparkfun_pro_micro_rp2010
+  - board: sparkfun_pro_micro_rp2040
     shield: the_paintbrush_right
