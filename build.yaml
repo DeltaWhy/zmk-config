@@ -14,7 +14,7 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: ffkb
+    shield: ffkb_v3
   - board: seeeduino_xiao_ble
     shield: totem_left
   - board: seeeduino_xiao_ble

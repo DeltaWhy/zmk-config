@@ -24,15 +24,15 @@
     // Rotation config, from Pete
     // This will change in the future
     // https://discord.com/channels/719497620560543766/845285481888743434/1206407883777114182
-    input_config {
-        compatible = "zmk,input-listener";
-        device = <&glidepoint>;
-        xy-swap;
-        y-invert;
-        x-invert;
-	scale-multiplier = <3>;
-	scale-divisor = <2>;
-    };
+    // input_config {
+    //     compatible = "zmk,input-listener";
+    //     device = <&glidepoint>;
+    //     xy-swap;
+    //     y-invert;
+    //     x-invert;
+    //     scale-multiplier = <3>;
+    //     scale-divisor = <2>;
+    // };
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;

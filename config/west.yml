@@ -8,17 +8,18 @@ manifest:
       url-base: https://github.com/sadekbaroudi
   projects:
     - name: zmk
-      # remote: zmkfirmware
-      # revision: main
-      remote: petejohanson
-      revision: feat/pointers-move-scroll
+      remote: zmkfirmware
+      revision: v0.3
+      # remote: petejohanson
+      # revision: feat/pointers-move-scroll
       import: app/west.yml
-    - name: cirque-input-module
-      remote: petejohanson
-      revision: main
+    # - name: cirque-input-module
+    #   remote: petejohanson
+    #   revision: main
     - name: zmk-fingerpunch-keyboards
       remote: sadekbaroudi
       revision: main
+      path: modules/zmk-fingerpunch-keyboards
       import: config/deps.yml
   self:
     path: config

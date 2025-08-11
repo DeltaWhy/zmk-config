@@ -1,0 +1,22 @@
+/.west
+/bootloader
+/modules
+/tools
+/zephyr
+/zmk
+/build
+
+/zmk-fingerpunch-*
+/cirque-input-module
+/zmk-pmw3610-driver
+
+# macOS
+*.DS_Store
+
+# Python
+__pycache__
+.python-version
+.venv
+
+# clangd
+app/.cache/
