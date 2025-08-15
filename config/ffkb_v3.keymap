@@ -12,6 +12,7 @@
 #define NAV     3
 #define NUM     4
 #define ADJUST  5
+#define MOUSE   6
 
 #define LSPO &hm LSHFT LS(N9)
 #define RSPC &hm RSHFT RS(N0)
@@ -179,6 +180,16 @@
     &trans     &kp F12      &kp F7       &kp F8      &kp F9        &kp PSCRN                                   &bt BT_CLR    &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
     &trans     &kp F11      &kp F4       &kp F5      &kp F6        &kp SLCK                                    &out OUT_BLE  &kp RSFT     &kp RCTL      &kp LALT    &kp RGUI    &trans
     &trans     &kp F10      &kp F1       &kp F2      &kp F3        &kp PAUSE_BREAK                             &out OUT_USB  &tog QWERTY  &tog GAME     &kp RALT    &trans      &bootloader
+                                         &trans      &trans        &trans       &trans        &trans           &trans        &trans       &trans
+            >;
+        };
+
+        mouse_layer {
+            label = "Mouse";
+            bindings = <
+    &trans     &trans       &trans       &trans      &trans        &trans                                      &trans        &trans       &trans        &trans      &trans      &trans
+    &trans     &trans       &trans       &trans      &trans        &mkp MB5                                    &trans        &trans       &trans        &trans      &trans      &trans
+    &trans     &trans       &mkp MCLK    &mkp RCLK   &mkp LCLK     &mkp MB4                                    &trans        &trans       &trans        &trans      &trans      &trans
                                          &trans      &trans        &trans       &trans        &trans           &trans        &trans       &trans
             >;
         };

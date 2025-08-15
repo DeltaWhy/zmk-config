@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/sadekbaroudi
     - name: deltawhy
       url-base: https://github.com/deltawhy
+    - name: oleksandrmaslov
+      url-base: https://github.com/oleksandrmaslov
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -25,5 +27,8 @@ manifest:
       revision: ffkb_v3_splinky
       path: modules/zmk-fingerpunch-keyboards
       import: config/deps.yml
+    - name: zmk-pointing-acceleration
+      remote: oleksandrmaslov
+      revision: main
   self:
     path: config

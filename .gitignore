@@ -9,6 +9,7 @@
 /zmk-fingerpunch-*
 /cirque-input-module
 /zmk-pmw3610-driver
+/zmk-pointing-acceleration
 
 # macOS
 *.DS_Store
