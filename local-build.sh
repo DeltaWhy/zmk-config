@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eEuo pipefail
 
 if [[ ! -d .venv ]]
@@ -17,7 +17,8 @@ fi
 SHIELD="$1"
 BOARD="$2"
 shift 2
-EXTRA_ARGS=($@)
+EXTRA_ARGS=("$@")
+declare -p EXTRA_ARGS
 
 TMPDIR="$(mktemp -d)"
 # trap "rm -rf $TMPDIR" EXIT
@@ -26,4 +27,4 @@ ln -s "$PWD/zephyr/module.yml" "$TMPDIR/zephyr"
 ln -s "$PWD/boards" "$PWD/config" "$PWD/ardux.dtsi" "$TMPDIR"
 ls -l "$TMPDIR"
 
-west build -s zmk/app -d "build/${SHIELD}_${BOARD}" -b "${BOARD}" -S studio-rpc-usb-uart -- -DZMK_CONFIG="${PWD}/config" -DSHIELD="${SHIELD}" -DZMK_EXTRA_MODULES="$TMPDIR" -DCONFIG_ZMK_STUDIO=y "${EXTRA_ARGS[@]}"
+west build -s zmk/app -d "build/${SHIELD}_${BOARD}" -b "${BOARD}" -- -DZMK_CONFIG="${PWD}/config" -DSHIELD="${SHIELD}" -DZMK_EXTRA_MODULES="$TMPDIR" "${EXTRA_ARGS[@]}"

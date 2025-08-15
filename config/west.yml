@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/petejohanson
     - name: sadekbaroudi
       url-base: https://github.com/sadekbaroudi
+    - name: deltawhy
+      url-base: https://github.com/deltawhy
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -13,12 +15,14 @@ manifest:
       # remote: petejohanson
       # revision: feat/pointers-move-scroll
       import: app/west.yml
-    # - name: cirque-input-module
-    #   remote: petejohanson
-    #   revision: main
-    - name: zmk-fingerpunch-keyboards
-      remote: sadekbaroudi
+    - name: cirque-input-module
+      remote: petejohanson
       revision: main
+    - name: zmk-fingerpunch-keyboards
+      # remote: sadekbaroudi
+      # revision: main
+      remote: deltawhy
+      revision: ffkb_v3_splinky
       path: modules/zmk-fingerpunch-keyboards
       import: config/deps.yml
   self:

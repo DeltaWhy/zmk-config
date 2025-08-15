@@ -5,6 +5,8 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/input_transform.h>
+#include <input/processors.dtsi>
 
 // From Pete: https://discord.com/channels/719497620560543766/845285481888743434/1206181117296644106
 &pro_micro_i2c {
@@ -13,8 +15,8 @@
         compatible = "cirque,pinnacle";
         reg = <0x2a>;
         status = "okay";
-        dr-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH)>;
-        sensitivity = "1x";
+        dr-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH)>;
+        sensitivity = "4x";
         sleep;
         #no-taps;
     };
@@ -33,6 +35,11 @@
     //     scale-multiplier = <3>;
     //     scale-divisor = <2>;
     // };
+    glidepoint_listener {
+        compatible = "zmk,input-listener";
+        device = <&glidepoint>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+    };
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
