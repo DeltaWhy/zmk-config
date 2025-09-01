@@ -10,6 +10,8 @@
 /cirque-input-module
 /zmk-pmw3610-driver
 /zmk-pointing-acceleration
+/zmk-smart-toggle
+/zmk-rgbled-widget
 
 # macOS
 *.DS_Store

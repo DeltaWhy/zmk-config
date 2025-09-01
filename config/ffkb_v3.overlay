@@ -18,34 +18,40 @@
         dr-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH)>;
         sensitivity = "1x";
         sleep;
-        #no-taps;
+
+        z-touch-detection;
+        z-threshold-touch = <5>;
+        z-threshold-release = <2>;
+        inertia;
+        inertia-start-velocity = <300>;
+        inertia-stop-velocity = <20>;
     };
 };
 
-&pointer_accel {
+/* &pointer_accel {
     input-type = <INPUT_EV_REL>;  // For relative input devices
         track-remainders;             // Accumulate fractional movements
         min-factor = <1000>;          // 1.0x at very slow speeds
-        max-factor = <4000>;         // 4.0x at fast speeds
+        max-factor = <3000>;         // 3.0x at fast speeds
         speed-threshold = <1200>;     // 1200 counts/sec for 1x
         speed-max = <6000>;          // 6000 counts/sec for max accel
         acceleration-exponent = <2>;  // Quadratic acceleration curve
-};
+}; */
 
 / {
     glidepoint_listener {
         compatible = "zmk,input-listener";
         device = <&glidepoint>;
         input-processors = <
-            &pointer_accel
-            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
+            // &pointer_accel
+            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)
             &zip_temp_layer 6 500
         >;
         scroller {
             layers = <3>;
             input-processors = <
                 &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)
-                &zip_xy_scaler 1 4
+                &zip_xy_scaler 1 8
                 &zip_xy_to_scroll_mapper
             >;
         };
