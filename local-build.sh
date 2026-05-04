@@ -27,4 +27,5 @@ ln -s "$PWD/zephyr/module.yml" "$TMPDIR/zephyr"
 ln -s "$PWD/boards" "$PWD/config" "$PWD/ardux.dtsi" "$TMPDIR"
 ls -l "$TMPDIR"
 
-west build -s zmk/app -d "build/${SHIELD}_${BOARD}" -b "${BOARD}" -- -DZMK_CONFIG="${PWD}/config" -DSHIELD="${SHIELD}" -DZMK_EXTRA_MODULES="$TMPDIR" "${EXTRA_ARGS[@]}"
+west build -s zmk/app -d "build/${SHIELD%% *}_${BOARD}" -b "${BOARD}" -- -DZMK_CONFIG="${PWD}/config" -DSHIELD="${SHIELD}" -DZMK_EXTRA_MODULES="$TMPDIR" "${EXTRA_ARGS[@]}"
+cp "build/${SHIELD%% *}_${BOARD}/zephyr/zmk.uf2" "build/${SHIELD%% *}_${BOARD}.uf2"
