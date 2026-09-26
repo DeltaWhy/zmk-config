@@ -6,19 +6,40 @@ manifest:
       url-base: https://github.com/petejohanson
     - name: sadekbaroudi
       url-base: https://github.com/sadekbaroudi
+    - name: deltawhy
+      url-base: https://github.com/deltawhy
+    - name: oleksandrmaslov
+      url-base: https://github.com/oleksandrmaslov
+    - name: carrefinho
+      url-base: https://github.com/carrefinho
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
   projects:
     - name: zmk
-      # remote: zmkfirmware
-      # revision: main
-      remote: petejohanson
-      revision: feat/pointers-move-scroll
+      remote: zmkfirmware
+      revision: v0.3
+      # remote: petejohanson
+      # revision: feat/pointers-move-scroll
       import: app/west.yml
     - name: cirque-input-module
-      remote: petejohanson
+      # remote: petejohanson
+      remote: carrefinho
       revision: main
     - name: zmk-fingerpunch-keyboards
-      remote: sadekbaroudi
-      revision: main
+      # remote: sadekbaroudi
+      # revision: main
+      remote: deltawhy
+      revision: ffkb_v3_splinky
+      path: modules/zmk-fingerpunch-keyboards
       import: config/deps.yml
+    # - name: zmk-pointing-acceleration
+    #   remote: oleksandrmaslov
+    #   revision: main
+    - name: zmk-rgbled-widget
+      remote: caksoylar
+      revision: v0.3
+    - name: zmk-smart-toggle
+      remote: caksoylar
+      revision: main
   self:
     path: config

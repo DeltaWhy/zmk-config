@@ -1,8 +1,0 @@
-# Copyright (c) 2022 The ZMK Contributors
-# SPDX-License-Identifier: MIT
-
-if SHIELD_CREPE
-
-config ZMK_KEYBOARD_NAME
-    default "CREPE"
-endif
